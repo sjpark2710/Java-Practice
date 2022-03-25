@@ -1,0 +1,64 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+
+public class ButtonActionWin extends JFrame implements ActionListener{ 
+
+	private static final long serialVERSIONUID = 1L;
+	
+	JButton btnOk = new JButton("OK");
+	JButton btnCancel = new JButton("Cancel");
+	JLabel dlb = new JLabel("클릭한 버튼의 제목이 보여집니다");
+	
+	public ButtonActionWin() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(300, 130);
+		
+		//윈도우 구성과 버튼의 이벤트 리스너 추가
+		makeButtonAndEventHandle();
+		setVisible(true);
+	}
+	
+	public void makeButtonAndEventHandle() {
+		JPanel p = new JPanel(new GridLayout(0,2));
+		p.add(btnOk);
+		p.add(btnCancel);
+		add(p, BorderLayout.CENTER);
+		add(dlb, BorderLayout.SOUTH);
+		
+		//2개 버튼의 이벤트 처리를 위해 리스너를 추가
+		btnOk.addActionListener(this);
+		btnCancel.addActionListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent evt) {
+		//클릭된 버튼의 이름을 저장
+		String strCmd = evt.getActionCommand();
+		
+		//레이블에 클릭된 버튼의 이름을 지정
+		if(strCmd.equals("OK")) {
+			dlb.setText("OK Button");
+		}else if(strCmd.equals("Cancel")) {
+			dlb.setText("Cancel Button");
+		}
+	}
+	
+	public static void main(String[]args) {
+		ButtonActionWin mywin = new ButtonActionWin();
+		mywin.setTitle("버튼 액션 이벤트 처리");
+	}
+
+
+
+
+
+}
