@@ -31,6 +31,7 @@ public class BasicServerSocket {
 			mySocket.close();
 				
 		}catch(IOException e) {
+			
 			System.out.println(e.toString());
 		}
 		
