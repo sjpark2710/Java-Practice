@@ -62,6 +62,7 @@ public class MyClientSocket {
 		System.out.print("서버에서 보낼 메시지 입력 >>");
 		Scanner s = new Scanner(System.in);
 		String msg = s.nextLine();
+		client.send(msg);
 		client.receive();
 		client.close();
 	}
